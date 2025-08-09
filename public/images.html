@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cinematic AI SketchUp - Images</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Cinematic AI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Upload</a></li>
+        <li class="nav-item"><a class="nav-link" href="breakdown.html">Breakdown</a></li>
+        <li class="nav-item"><a class="nav-link active" href="images.html">Images</a></li>
+        <li class="nav-item"><a class="nav-link" href="settings.html">Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="props.html">Props & LoRA</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+  <h1 class="mb-4">Generated Images</h1>
+  <div class="mb-4">
+    <label for="manualPrompt" class="form-label">Manual image prompt</label>
+    <div class="input-group">
+      <input type="text" id="manualPrompt" class="form-control" placeholder="Describe the image..." />
+      <button class="btn btn-primary" id="manualGenerate" type="button">Generate</button>
+    </div>
+    <div id="manual-alert" class="mt-2"></div>
+  </div>
+  <div class="progress mb-3" id="images-progress" aria-label="image generation progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:0%">0%</div>
+  </div>
+  <div id="images-container" class="row row-cols-1 row-cols-md-2 g-4"></div>
+</div>
+<script type="module" src="../src/js/imagesPage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
