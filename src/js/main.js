@@ -6,6 +6,7 @@ document.getElementById('upload-form').addEventListener('submit', async (e) => {
   const fileInput = document.getElementById('scriptFile');
   const file = fileInput.files[0];
   const alertDiv = document.getElementById('upload-alert');
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
   const spinner = document.getElementById('upload-spinner');
   const progress = document.getElementById('upload-progress');
   const bar = progress.querySelector('.progress-bar');
@@ -28,15 +29,25 @@ document.getElementById('upload-form').addEventListener('submit', async (e) => {
       const breakdown = await generateBreakdown(lines);
     bar.style.width = '100%';
     bar.textContent = '100%';
+=======
+  alertDiv.innerHTML = '';
+  if (!file) return;
+  try {
+    const lines = await parseFile(file);
+    const breakdown = await generateBreakdown(lines);
+>>>>>>> main
     localStorage.setItem('breakdown', JSON.stringify(breakdown));
     window.location.href = 'breakdown.html';
   } catch (err) {
     alertDiv.innerHTML = `<div class="alert alert-danger">${err.message}</div>`;
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
     bar.style.width = '0%';
     bar.textContent = '0%';
   } finally {
     clearInterval(interval);
     spinner.classList.add('d-none');
     setTimeout(() => progress.classList.add('d-none'), 500);
+=======
+>>>>>>> main
   }
 });

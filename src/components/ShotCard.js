@@ -4,6 +4,7 @@ export function createShotCard(shot, index) {
   const card = document.createElement('div');
   card.className = 'card h-100';
   card.innerHTML = `
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
       <div class="d-flex justify-content-center my-2 d-none" id="spinner-${index}">
         <div class="spinner-border" role="status">
           <span class="visually-hidden">Loading...</span>
@@ -26,12 +27,28 @@ export function createShotCard(shot, index) {
         <a class="btn btn-sm btn-outline-success ms-2" id="download-${index}" download="shot-${index}.png">Download</a>
         <div class="alert alert-danger mt-2 d-none" id="error-${index}"></div>
       </div>`;
+=======
+    <img src="" class="card-img-top" alt="shot image" id="img-${index}">
+    <div class="card-body">
+      <h5 class="card-title">${shot.Character || ''}</h5>
+      <p class="card-text">${shot['Shot description'] || ''}</p>
+      <p><small>${shot['Respective text-to-image Prompt'] || ''}</small></p>
+      <div class="input-group mb-2">
+        <span class="input-group-text">Seed</span>
+        <input type="number" class="form-control" id="seed-${index}" value="${Math.floor(Math.random()*1e6)}">
+      </div>
+      <button class="btn btn-sm btn-secondary me-2" id="repaint-${index}">Repaint</button>
+      <button class="btn btn-sm btn-primary" id="regen-${index}">Regenerate</button>
+      <a class="btn btn-sm btn-outline-success ms-2" id="download-${index}" download="shot-${index}.png">Download</a>
+    </div>`;
+>>>>>>> main
 
   async function paint(useSameSeed) {
     const seedInput = document.getElementById(`seed-${index}`);
     if (!useSameSeed) seedInput.value = Math.floor(Math.random()*1e6);
     const seed = Number(seedInput.value);
     const img = document.getElementById(`img-${index}`);
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
     const spinner = document.getElementById(`spinner-${index}`);
     const progress = document.getElementById(`progress-${index}`);
     const bar = progress.querySelector('.progress-bar');
@@ -48,11 +65,15 @@ export function createShotCard(shot, index) {
       bar.style.width = pct + '%';
       bar.textContent = pct + '%';
     }, 200);
+=======
+    img.src = 'https://via.placeholder.com/512?text=Loading';
+>>>>>>> main
     try {
       const res = await generateImage(shot['Respective text-to-image Prompt'], seed);
       img.src = res.image || '';
       const dl = document.getElementById(`download-${index}`);
       dl.href = img.src;
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
       img.classList.remove('d-none');
     } catch (err) {
       errDiv.textContent = err.message;
@@ -63,13 +84,22 @@ export function createShotCard(shot, index) {
       bar.textContent = '100%';
       setTimeout(() => progress.classList.add('d-none'), 500);
       spinner.classList.add('d-none');
+=======
+    } catch (err) {
+      console.error(err);
+      img.alt = 'Error';
+>>>>>>> main
     }
   }
 
   card.querySelector(`#repaint-${index}`).addEventListener('click', () => paint(true));
   card.querySelector(`#regen-${index}`).addEventListener('click', () => paint(false));
   // initial generate
+<<<<<<< f735rq-codex/build-responsive-multi-page-web-app
   paint(true).finally(() => card.dispatchEvent(new Event('image-loaded')));
+=======
+  paint(true);
+>>>>>>> main
 
   return card;
 }
