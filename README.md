@@ -1,6 +1,12 @@
 # Cinematic AI SketchUp App
 
-This project is a multi-page web application that converts uploaded CSV or SRT script files into shot breakdowns using Replicate's MOE text model and visualizes each shot using an image generation model. Bootstrap 5 provides the responsive interface, animated gradient backgrounds keep the UI lively, and each generated shot is displayed in a card with repaint, regenerate, and download controls. The app supports seed management, props and location hints, and optional LoRA reference images for actor consistency.
+This project is a multi-page web application that converts uploaded CSV or SRT
+script files into shot breakdowns using Replicate's MOE text model and
+visualizes each shot using an image generation model. Bootstrap 5 provides the
+responsive interface, animated gradient backgrounds keep the UI lively, and each
+generated shot is displayed in a card with repaint, regenerate, and download
+controls. The app supports seed management, props and location hints, and
+optional LoRA reference images for actor consistency.
 
 ## Features
 - Upload `.csv` or `.srt` files
@@ -17,10 +23,10 @@ This project is a multi-page web application that converts uploaded CSV or SRT s
 
 ## Folder Structure
 ```
-public/        static pages and styles
-src/js/        front-end logic
-src/components reusable UI components
-src/utils/     utility functions
+public/         static pages and styles
+src/js/         front-end logic
+src/components/ reusable UI components
+src/utils/      utility functions
 ```
 
 ## Notes

@@ -6,7 +6,12 @@ const progress = document.getElementById('images-progress');
 const bar = progress.querySelector('.progress-bar');
 let completed = 0;
 const total = breakdown.length;
-if (total === 0) progress.classList.add('d-none');
+if (total === 0) {
+  progress.classList.add('d-none');
+  const msg = document.createElement('p');
+  msg.textContent = 'No shots to display yet.';
+  container.appendChild(msg);
+}
 
 function updateBar() {
   completed++;

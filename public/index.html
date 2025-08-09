@@ -34,9 +34,11 @@
     </div>
     <button type="submit" class="btn btn-primary">Generate Breakdown</button>
     <div id="upload-spinner" class="ms-3 d-none align-middle">
-      <div class="spinner-border" role="status"></div>
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
-    <div class="progress mt-3 d-none" id="upload-progress">
+    <div class="progress mt-3 d-none" id="upload-progress" aria-label="breakdown generation progress">
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:0%">0%</div>
     </div>
   </form>

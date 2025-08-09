@@ -23,8 +23,9 @@ document.getElementById('upload-form').addEventListener('submit', async (e) => {
       bar.style.width = pct + '%';
       bar.textContent = pct + '%';
     }, 200);
-    const lines = await parseFile(file);
-    const breakdown = await generateBreakdown(lines);
+      const lines = await parseFile(file);
+      if (!lines.length) throw new Error('No lines found in file');
+      const breakdown = await generateBreakdown(lines);
     bar.style.width = '100%';
     bar.textContent = '100%';
     localStorage.setItem('breakdown', JSON.stringify(breakdown));

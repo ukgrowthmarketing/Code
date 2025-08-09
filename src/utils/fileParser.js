@@ -9,7 +9,7 @@ export async function parseFile(file) {
   throw new Error('Unsupported file type');
 }
 
-function parseCSV(text) {
+export function parseCSV(text) {
   const lines = text.trim().split(/\r?\n/);
   const parseLine = (line) => {
     const result = [];
@@ -47,12 +47,12 @@ function parseCSV(text) {
   });
 }
 
-function parseSRT(text) {
+export function parseSRT(text) {
   const entries = text.trim().split(/\n\n+/);
   return entries.map(e => {
     const parts = e.split(/\n/);
     const time = parts[1] ? parts[1].split(' --> ')[0] : '';
     const subtitle = parts.slice(2).join(' ');
     return { Timecode: time, Subtitle: subtitle };
-  });
-}
+    });
+  }
