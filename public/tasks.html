@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cinematic AI SketchUp - Props & LoRA</title>
+  <title>Cinematic AI SketchUp - Tasks</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="style.css" rel="stylesheet" />
 </head>
@@ -21,32 +21,17 @@
         <li class="nav-item"><a class="nav-link" href="images.html">Images</a></li>
         <li class="nav-item"><a class="nav-link" href="render.html">Render</a></li>
         <li class="nav-item"><a class="nav-link" href="settings.html">Settings</a></li>
-        <li class="nav-item"><a class="nav-link active" href="props.html">Props & LoRA</a></li>
-        <li class="nav-item"><a class="nav-link" href="tasks.html">Tasks</a></li>
+        <li class="nav-item"><a class="nav-link" href="props.html">Props & LoRA</a></li>
+        <li class="nav-item"><a class="nav-link active" href="tasks.html">Tasks</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="container mt-4">
-  <h1 class="mb-4">Props & LoRA</h1>
-  <form id="props-form">
-    <div class="mb-3">
-      <label for="props" class="form-label">Props (comma separated)</label>
-      <input type="text" class="form-control" id="props" />
-    </div>
-    <div class="mb-3">
-      <label for="location" class="form-label">Location</label>
-      <input type="text" class="form-control" id="location" />
-    </div>
-    <div class="mb-3">
-      <label for="lora" class="form-label">LoRA Reference Image URL</label>
-      <input type="url" class="form-control" id="lora" />
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
-  <div id="props-alert" class="mt-3"></div>
+  <h1 class="mb-4">Ongoing Tasks</h1>
+  <div id="tasks-container" class="row row-cols-1 g-4"></div>
 </div>
-<script type="module" src="../src/js/propsPage.js"></script>
+<script type="module" src="../src/js/tasksPage.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

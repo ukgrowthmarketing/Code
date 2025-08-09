@@ -13,8 +13,11 @@ optional LoRA reference images for actor consistency.
 - Upload `.csv`, `.srt`, `.txt`, `.pdf`, or `.xlsx` files, or provide a Google Sheet URL
 - Automatic shot breakdown generation
 - Image generation for each shot with repaint/regenerate options
+- Auto-generated filenames with option to rename before download
 - Progress bars with real-time percentage updates for breakdown and image generation
 - Manual image generation from an ad‑hoc prompt on the images page
+- Ongoing task page that tracks breakdown and image-generation progress even when switching tabs
+- Basic render playground for arranging generated shots on a simple timeline
 - Settings page for API key and model selection
 - Props and LoRA configuration
 - Mobile-first responsive layout using Bootstrap 5

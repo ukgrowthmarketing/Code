@@ -1,5 +1,14 @@
+import { addTask, updateTask } from './tasks.js';
+
 export async function generateBreakdown(lines) {
   const settings = getSettings();
+  const taskId = addTask('breakdown', 'Generating shot breakdown');
+  updateTask(taskId, { status: 'running' });
+  let pct = 0;
+  const timer = setInterval(() => {
+    pct = Math.min(pct + 10, 90);
+    updateTask(taskId, { progress: pct });
+  }, 200);
   try {
     const res = await fetch('/api/shot-breakdown', {
       method: 'POST',
@@ -10,15 +19,27 @@ export async function generateBreakdown(lines) {
       const msg = await res.text();
       throw new Error(msg || 'Breakdown request failed');
     }
-    return res.json();
+    const data = await res.json();
+    updateTask(taskId, { status: 'succeeded', progress: 100, result: data });
+    return data;
   } catch (err) {
+    updateTask(taskId, { status: 'failed', progress: 100, error: err.message });
     throw new Error(err.message || 'Breakdown request failed');
+  } finally {
+    clearInterval(timer);
   }
 }
 
 export async function generateImage(prompt, seed) {
   const settings = getSettings();
   const props = getProps();
+  const taskId = addTask('image', prompt);
+  updateTask(taskId, { status: 'running' });
+  let pct = 0;
+  const timer = setInterval(() => {
+    pct = Math.min(pct + 10, 90);
+    updateTask(taskId, { progress: pct });
+  }, 200);
   try {
     const res = await fetch('/api/generate-image', {
       method: 'POST',
@@ -29,9 +50,14 @@ export async function generateImage(prompt, seed) {
       const msg = await res.text();
       throw new Error(msg || 'Image generation failed');
     }
-    return res.json();
+    const data = await res.json();
+    updateTask(taskId, { status: 'succeeded', progress: 100, result: data.image });
+    return data;
   } catch (err) {
+    updateTask(taskId, { status: 'failed', progress: 100, error: err.message });
     throw new Error(err.message || 'Image generation failed');
+  } finally {
+    clearInterval(timer);
   }
 }
 
