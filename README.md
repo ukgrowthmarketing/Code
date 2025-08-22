@@ -10,6 +10,10 @@ This project is a multi-page web application that converts uploaded CSV or SRT s
 - Props and LoRA configuration
 - Mobile-first responsive layout using Bootstrap 5
 
+## Control Panel and Custom Modules
+- `control-panel.html` provides toggles for enabling or disabling categories, modules, and individual features.
+- Users can upload custom HTML, CSS, or JavaScript files. Uploaded files are served from `/develop` and can register new modules by calling `registerModule` from `src/js/moduleManager.js`.
+
 ## Development
 1. Run `./setup.sh` to install dependencies and set the Replicate API key.
 2. Access the app at [http://localhost:3000](http://localhost:3000).

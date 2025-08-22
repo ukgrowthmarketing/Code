@@ -2,6 +2,8 @@ import express from 'express';
 import fetch from 'node-fetch';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,6 +12,19 @@ const app = express();
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/src', express.static(path.join(__dirname, 'src')));
+
+const uploadDir = path.join(__dirname, 'public', 'develop');
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: uploadDir,
+  filename: (req, file, cb) => cb(null, file.originalname)
+});
+const upload = multer({ storage });
+
+app.post('/api/upload-module', upload.array('files'), (req, res) => {
+  res.json({ files: req.files.map(f => f.filename) });
+});
 
 app.post('/api/shot-breakdown', async (req, res) => {
   const { lines, textModel, apiKey } = req.body;
